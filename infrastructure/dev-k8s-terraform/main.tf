@@ -135,7 +135,7 @@ resource "aws_security_group" "matt-kube-master-sg" {
 resource "aws_instance" "kube-master" {
     ami = "ami-013f17f36f8b1fefb"
     instance_type = "t3a.medium"
-    iam_instance_profile = module.iam.master_profile_name-1
+    iam_instance_profile = module.iam.master_profile_name
     vpc_security_group_ids = [aws_security_group.matt-kube-master-sg.id, aws_security_group.matt-kube-mutual-sg.id]
     key_name = "mattkey"
     subnet_id = "subnet-090f1eb110705b677"  # select own subnet_id of us-east-1a
@@ -153,7 +153,7 @@ resource "aws_instance" "kube-master" {
 resource "aws_instance" "worker-1" {
     ami = "ami-013f17f36f8b1fefb"
     instance_type = "t2.medium"
-        iam_instance_profile = module.iam.worker_profile_name-1
+    iam_instance_profile = module.iam.worker_profile_name
     vpc_security_group_ids = [aws_security_group.matt-kube-worker-sg.id, aws_security_group.matt-kube-mutual-sg.id]
     key_name = "mattkey"
     subnet_id = "subnet-090f1eb110705b677"  # select own subnet_id of us-east-1a
@@ -171,7 +171,7 @@ resource "aws_instance" "worker-1" {
 resource "aws_instance" "worker-2" {
     ami = "ami-013f17f36f8b1fefb"
     instance_type = "t2.medium"
-    iam_instance_profile = module.iam.worker_profile_name-1
+    iam_instance_profile = module.iam.worker_profile_name
     vpc_security_group_ids = [aws_security_group.matt-kube-worker-sg.id, aws_security_group.matt-kube-mutual-sg.id]
     key_name = "mattkey"
     subnet_id = "subnet-090f1eb110705b677"  # select own subnet_id of us-east-1a
